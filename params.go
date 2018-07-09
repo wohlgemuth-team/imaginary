@@ -44,6 +44,7 @@ var allowedParams = map[string]string{
 	"extend":      "extend",
 	"sigma":       "float",
 	"minampl":     "float",
+	"threshold":   "float",
 	"operations":  "json",
 }
 
@@ -151,6 +152,7 @@ func mapImageParams(params map[string]interface{}) ImageOptions {
 		Background:    params["background"].([]uint8),
 		Sigma:         params["sigma"].(float64),
 		MinAmpl:       params["minampl"].(float64),
+		Threshold:     params["threshold"].(float64),
 		Operations:    params["operations"].(PipelineOperations),
 	}
 }

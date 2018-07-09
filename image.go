@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-
 	"gopkg.in/h2non/bimg.v1"
 )
 
@@ -26,6 +25,7 @@ var OperationsMap = map[string]Operation{
 	"blur":      GaussianBlur,
 	"smartcrop": SmartCrop,
 	"fit":       Fit,
+	"trim":      Trim,
 }
 
 // Image stores an image binary buffer and its MIME type
@@ -93,6 +93,12 @@ func Resize(buf []byte, o ImageOptions) (Image, error) {
 		opts.Crop = true
 	}
 
+	return Process(buf, opts)
+}
+
+func Trim(buf []byte, o ImageOptions) (Image, error) {
+	opts := BimgOptions(o)
+	opts.Trim = true
 	return Process(buf, opts)
 }
 

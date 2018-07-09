@@ -26,9 +26,11 @@ type ImageOptions struct {
 	NoRotation    bool
 	NoProfile     bool
 	StripMetadata bool
+	Trim          bool
 	Opacity       float32
 	Sigma         float64
 	MinAmpl       float64
+	Threshold     float64
 	Text          string
 	Font          string
 	Type          string
@@ -59,7 +61,9 @@ func BimgOptions(o ImageOptions) bimg.Options {
 		Height:         o.Height,
 		Flip:           o.Flip,
 		Flop:           o.Flop,
+		Trim:           o.Trim,
 		Quality:        o.Quality,
+		Threshold:      o.Threshold,
 		Compression:    o.Compression,
 		NoAutoRotate:   o.NoRotation,
 		NoProfile:      o.NoProfile,
